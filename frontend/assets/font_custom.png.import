@@ -1,0 +1,25 @@
+[remap]
+
+importer="font_data_image"
+type="FontFile"
+uid="uid://cnbbxbc13f703"
+path="res://.godot/imported/font_custom.png-2f58501cb7bd8b3b61236fff2c667485.fontdata"
+
+[deps]
+
+source_file="res://assets/font_custom.png"
+dest_files=["res://.godot/imported/font_custom.png-2f58501cb7bd8b3b61236fff2c667485.fontdata"]
+
+[params]
+
+character_ranges=PackedStringArray("0-255")
+kerning_pairs=PackedStringArray()
+columns=16
+rows=16
+image_margin=Rect2i(0, 0, 0, 0)
+character_margin=Rect2i(0, 0, 0, 0)
+ascent=0
+descent=0
+fallbacks=[]
+compress=true
+scaling_mode=2

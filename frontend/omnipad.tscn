@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgklhpsaac82q"]
+
+[ext_resource type="Texture2D" uid="uid://bsbipulwwdclu" path="res://assets/onmipad.png" id="1_rsxs0"]
+[ext_resource type="Script" uid="uid://c2gfm2xphdykv" path="res://omnipad.gd" id="2_rsxs0"]
+[ext_resource type="Texture2D" uid="uid://bicul8g5o2my2" path="res://assets/onmistick.png" id="3_o0p1c"]
+
+[node name="Omnipad" type="TextureRect"]
+offset_right = 31.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+texture = ExtResource("1_rsxs0")
+script = ExtResource("2_rsxs0")
+
+[node name="Stick" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(10, 9)
+texture = ExtResource("3_o0p1c")
+centered = false

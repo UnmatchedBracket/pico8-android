@@ -1,0 +1,25 @@
+[remap]
+
+importer="font_data_image"
+type="FontFile"
+uid="uid://c2jlc3nt8y38q"
+path="res://.godot/imported/atlas-0.png-de16249c39923dd668d983d63dec79a3.fontdata"
+
+[deps]
+
+source_file="res://assets/font/atlas-0.png"
+dest_files=["res://.godot/imported/atlas-0.png-de16249c39923dd668d983d63dec79a3.fontdata"]
+
+[params]
+
+character_ranges=PackedStringArray("0-127")
+kerning_pairs=PackedStringArray()
+columns=16
+rows=8
+image_margin=Rect2i(0, 0, 0, 0)
+character_margin=Rect2i(0, 0, 0, 0)
+ascent=0
+descent=0
+fallbacks=[]
+compress=true
+scaling_mode=2

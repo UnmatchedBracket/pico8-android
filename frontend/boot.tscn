@@ -1,0 +1,137 @@
+[gd_scene load_steps=14 format=3 uid="uid://clwlaw414wfp8"]
+
+[ext_resource type="Script" uid="uid://b54xvq68jxh01" path="res://boot.gd" id="1_hjvc4"]
+[ext_resource type="FontFile" uid="uid://c2jlc3nt8y38q" path="res://assets/font/atlas-0.png" id="2_n76rq"]
+[ext_resource type="StyleBox" uid="uid://dkl033k8y28kg" path="res://boot/boxstyle.tres" id="4_segco"]
+[ext_resource type="StyleBox" uid="uid://c1h480oo8h64p" path="res://boot/boxstyle_pressed.tres" id="5_m6jb1"]
+[ext_resource type="Script" uid="uid://cvjxkw6ljrn0y" path="res://arranger.gd" id="6_xf3if"]
+
+[sub_resource type="Theme" id="Theme_t5imi"]
+default_font = ExtResource("2_n76rq")
+default_font_size = 5
+
+[sub_resource type="ImageTexture" id="ImageTexture_m6jb1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xf3if"]
+bg_color = Color(0.513726, 0.462745, 0.611765, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dm40k"]
+content_margin_top = 5.0
+bg_color = Color(0.0470588, 0.0705882, 0.137255, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m6jb1"]
+content_margin_left = 5.0
+bg_color = Color(0.0470588, 0.0705882, 0.137255, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ye5a"]
+content_margin_top = 5.0
+bg_color = Color(0.0470588, 0.0705882, 0.137255, 1)
+corner_detail = 1
+
+[sub_resource type="Theme" id="Theme_8ye5a"]
+HScrollBar/icons/decrement = SubResource("ImageTexture_m6jb1")
+HScrollBar/icons/decrement_highlight = SubResource("ImageTexture_m6jb1")
+HScrollBar/icons/decrement_pressed = SubResource("ImageTexture_m6jb1")
+HScrollBar/icons/increment = SubResource("ImageTexture_m6jb1")
+HScrollBar/icons/increment_highlight = SubResource("ImageTexture_m6jb1")
+HScrollBar/icons/increment_pressed = SubResource("ImageTexture_m6jb1")
+HScrollBar/styles/grabber = SubResource("StyleBoxFlat_xf3if")
+HScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_xf3if")
+HScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_xf3if")
+HScrollBar/styles/scroll = SubResource("StyleBoxFlat_dm40k")
+HScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_dm40k")
+VScrollBar/icons/decrement = SubResource("ImageTexture_m6jb1")
+VScrollBar/icons/decrement_highlight = SubResource("ImageTexture_m6jb1")
+VScrollBar/icons/decrement_pressed = SubResource("ImageTexture_m6jb1")
+VScrollBar/icons/increment = SubResource("ImageTexture_m6jb1")
+VScrollBar/icons/increment_highlight = SubResource("ImageTexture_m6jb1")
+VScrollBar/icons/increment_pressed = SubResource("ImageTexture_m6jb1")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_xf3if")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_xf3if")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_xf3if")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_m6jb1")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_8ye5a")
+
+[sub_resource type="LabelSettings" id="LabelSettings_m6jb1"]
+font = ExtResource("2_n76rq")
+font_size = 5
+
+[node name="Boot" type="Node2D"]
+script = ExtResource("1_hjvc4")
+
+[node name="SelectPicoZip" type="Node2D" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="Control2" type="Control" parent="SelectPicoZip" node_paths=PackedStringArray("rect")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 128.0
+offset_top = 256.0
+offset_right = 128.0
+offset_bottom = 256.0
+scale = Vector2(2.055, 2.055)
+script = ExtResource("6_xf3if")
+rect = NodePath("StackContainer")
+center_y = true
+
+[node name="StackContainer" type="VBoxContainer" parent="SelectPicoZip/Control2"]
+layout_mode = 0
+offset_left = -74.0
+offset_top = -32.0
+offset_right = 76.0
+offset_bottom = 32.0
+alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="SelectPicoZip/Control2/StackContainer"]
+layout_mode = 2
+
+[node name="OpenPickerButton" type="Button" parent="SelectPicoZip/Control2/StackContainer/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_t5imi")
+theme_override_colors/font_color = Color(1, 0.945098, 0.909804, 1)
+theme_override_constants/line_spacing = 2
+theme_override_styles/focus = ExtResource("5_m6jb1")
+theme_override_styles/disabled_mirrored = ExtResource("4_segco")
+theme_override_styles/disabled = ExtResource("4_segco")
+theme_override_styles/hover_pressed_mirrored = ExtResource("5_m6jb1")
+theme_override_styles/hover_pressed = ExtResource("5_m6jb1")
+theme_override_styles/hover_mirrored = ExtResource("5_m6jb1")
+theme_override_styles/hover = ExtResource("5_m6jb1")
+theme_override_styles/pressed_mirrored = ExtResource("5_m6jb1")
+theme_override_styles/pressed = ExtResource("5_m6jb1")
+theme_override_styles/normal_mirrored = ExtResource("4_segco")
+theme_override_styles/normal = ExtResource("4_segco")
+text = "sELECT pico-8 RASPBERRY pI .ZIP
+(PICO-8_X.X.XX_RASPI.ZIP)"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SelectPicoZip/Control2/StackContainer"]
+custom_minimum_size = Vector2(128, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_8ye5a")
+
+[node name="Label" type="Label" parent="SelectPicoZip/Control2/StackContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "..."
+label_settings = SubResource("LabelSettings_m6jb1")
+
+[node name="UnpackProgressContainer" type="Node2D" parent="." node_paths=PackedStringArray("rect")]
+unique_name_in_owner = true
+visible = false
+script = ExtResource("6_xf3if")
+rect = NodePath("UnpackProgress")
+center_y = true
+
+[node name="UnpackProgress" type="Label" parent="UnpackProgressContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 20)
+offset_left = 3.0
+offset_right = 147.0
+offset_bottom = 13.0
+label_settings = SubResource("LabelSettings_m6jb1")
