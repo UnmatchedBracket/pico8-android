@@ -11,3 +11,8 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
                 DisplayServer.virtual_keyboard_hide()
             else:
                 DisplayServer.virtual_keyboard_show("                                     ")
+
+func _notification(what: int) -> void:
+    if what == NOTIFICATION_VISIBILITY_CHANGED:
+        if KBMan.get_correct() == KBMan.KBType.GAMING:
+            DisplayServer.virtual_keyboard_hide()

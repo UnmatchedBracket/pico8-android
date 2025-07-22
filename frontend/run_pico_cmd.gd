@@ -6,6 +6,8 @@ enum ExecutionMode { PICO8, TELNETSSH }
 var pico_pid = null
 
 func _ready() -> void:
+    if Engine.is_embedded_in_editor():
+        return
     var cmdline = ""
     match execution_mode:
         ExecutionMode.PICO8:

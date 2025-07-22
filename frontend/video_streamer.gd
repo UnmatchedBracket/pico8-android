@@ -221,7 +221,7 @@ func _input(event: InputEvent) -> void:
             return
         var id = OS.get_keycode_string(event.keycode)
         if id in SDL_KEYMAP:
-            send_key(SDL_KEYMAP[id], event.pressed, event.echo, keymod2sdl(event.get_modifiers_mask(), event.keycode if event.pressed else 0))
+            send_key(SDL_KEYMAP[id], event.pressed, event.echo, keymod2sdl(event.get_modifiers_mask(), event.keycode if event.pressed else 0) | keys2sdlmod(held_keys))
         if event.unicode and event.unicode < 256 and event.pressed:
             send_input(event.unicode)
     #if not (tcp and tcp.get_status() == StreamPeerTCP.STATUS_CONNECTED):

@@ -139,3 +139,4 @@ func _notification(what: int) -> void:
         if key_state != KeyState.RELEASED:
             key_state = KeyState.RELEASED
             send_ev(false)
+            self.texture = keycap_normal
