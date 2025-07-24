@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://clwlaw414wfp8"]
+[gd_scene load_steps=15 format=3 uid="uid://clwlaw414wfp8"]
 
 [ext_resource type="Script" uid="uid://b54xvq68jxh01" path="res://boot.gd" id="1_hjvc4"]
 [ext_resource type="FontFile" uid="uid://c2jlc3nt8y38q" path="res://assets/font/atlas-0.png" id="2_n76rq"]
@@ -57,6 +57,10 @@ VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_8ye5a")
 [sub_resource type="LabelSettings" id="LabelSettings_m6jb1"]
 font = ExtResource("2_n76rq")
 font_size = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_xf3if"]
+font = ExtResource("2_n76rq")
+font_size = 10
 
 [node name="Boot" type="Node2D"]
 script = ExtResource("1_hjvc4")
@@ -135,3 +139,88 @@ offset_left = 3.0
 offset_right = 147.0
 offset_bottom = 13.0
 label_settings = SubResource("LabelSettings_m6jb1")
+
+[node name="AllFileAccessContainer" type="Node2D" parent="." node_paths=PackedStringArray("rect")]
+unique_name_in_owner = true
+visible = false
+script = ExtResource("6_xf3if")
+rect = NodePath("VBoxContainer")
+center_y = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AllFileAccessContainer"]
+clip_contents = true
+offset_right = 160.0
+offset_bottom = 44.0
+
+[node name="WarningHeader" type="Label" parent="AllFileAccessContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 20)
+layout_mode = 2
+text = "all files access"
+label_settings = SubResource("LabelSettings_xf3if")
+horizontal_alignment = 1
+
+[node name="Warning" type="Label" parent="AllFileAccessContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 20)
+layout_mode = 2
+text = "tO CONSISTIENTLY ACCESS dOCUMENTS/PICO8,
+THIS APP NEEDS THE \"aLL fILES aCCESS\"
+PERMISSION. iT'S NOT STRICTLY REQUIRED,
+BUT NOT GRANTING IT MAY CAUSE ISSUES
+IF YOU MODIFY OR ADD FILES TO THE
+pico-8 DATA DIRECTORY.
+
+yOU CAN CHANGE THIS LATER FROM THE
+ANDROID SETTINGS IF YOU HAVE ISSUES.
+"
+label_settings = SubResource("LabelSettings_m6jb1")
+horizontal_alignment = 1
+
+[node name="GrantButton" type="Button" parent="AllFileAccessContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_t5imi")
+theme_override_colors/font_color = Color(1, 0.945098, 0.909804, 1)
+theme_override_constants/line_spacing = 2
+theme_override_styles/focus = ExtResource("5_m6jb1")
+theme_override_styles/disabled_mirrored = ExtResource("4_segco")
+theme_override_styles/disabled = ExtResource("4_segco")
+theme_override_styles/hover_pressed_mirrored = ExtResource("5_m6jb1")
+theme_override_styles/hover_pressed = ExtResource("5_m6jb1")
+theme_override_styles/hover_mirrored = ExtResource("5_m6jb1")
+theme_override_styles/hover = ExtResource("5_m6jb1")
+theme_override_styles/pressed_mirrored = ExtResource("5_m6jb1")
+theme_override_styles/pressed = ExtResource("5_m6jb1")
+theme_override_styles/normal_mirrored = ExtResource("4_segco")
+theme_override_styles/normal = ExtResource("4_segco")
+text = "grant (OPENS SETTINGS)"
+
+[node name="Container" type="Container" parent="AllFileAccessContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="DenyButton" type="Button" parent="AllFileAccessContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_t5imi")
+theme_override_colors/font_color = Color(1, 0.945098, 0.909804, 1)
+theme_override_constants/line_spacing = 2
+theme_override_styles/focus = ExtResource("5_m6jb1")
+theme_override_styles/disabled_mirrored = ExtResource("4_segco")
+theme_override_styles/disabled = ExtResource("4_segco")
+theme_override_styles/hover_pressed_mirrored = ExtResource("5_m6jb1")
+theme_override_styles/hover_pressed = ExtResource("5_m6jb1")
+theme_override_styles/hover_mirrored = ExtResource("5_m6jb1")
+theme_override_styles/hover = ExtResource("5_m6jb1")
+theme_override_styles/pressed_mirrored = ExtResource("5_m6jb1")
+theme_override_styles/pressed = ExtResource("5_m6jb1")
+theme_override_styles/normal_mirrored = ExtResource("4_segco")
+theme_override_styles/normal = ExtResource("4_segco")
+text = "deny (WON'T ASK AGAIN)"
+
+[node name="Container2" type="Container" parent="AllFileAccessContainer/VBoxContainer"]
+layout_mode = 2

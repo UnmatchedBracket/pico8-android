@@ -32,6 +32,12 @@ const BOOTSTRAP_PACKAGE_VERSION = "1"
 func setup():
     %SelectPicoZip.visible = false
     (%UnpackProgressContainer as Node2D).visible = true
+    if (
+        "android.permission.MANAGE_EXTERNAL_STORAGE" not in OS.get_granted_permissions()
+        and FileAccess.file_exists("user://dont-ask-for-storage")
+    ):
+        %UnpackProgress.text += "warning: all files access is disabled"
+
     var tar_path = APPDATA_FOLDER + "/package.tar.gz"
     var tar_path_godot = "user://package.tar.gz"
     var pico_path = APPDATA_FOLDER + "/pico8.zip"
@@ -110,6 +116,30 @@ func setup():
         %UnpackProgress.text = "no setup needed"
         if get_tree():
             await get_tree().process_frame
+    if (
+        "android.permission.MANAGE_EXTERNAL_STORAGE" in OS.get_granted_permissions()
+        or FileAccess.file_exists("user://dont-ask-for-storage")
+    ):
+        get_tree().change_scene_to_file("res://main.tscn")
+    else:
+        (%UnpackProgressContainer as Node2D).visible = false
+        (%AllFileAccessContainer as Node2D).visible = true
+        %GrantButton.pressed.connect(permission_grant)
+        %DenyButton.pressed.connect(permission_deny)
+
+var waiting_for_focus = false
+func permission_grant():
+    OS.request_permission("android.permission.MANAGE_EXTERNAL_STORAGE")
+    waiting_for_focus = true
+
+func _notification(what: int) -> void:
+    if waiting_for_focus and what == NOTIFICATION_APPLICATION_FOCUS_IN:
+        get_tree().change_scene_to_file("res://main.tscn")
+
+func permission_deny():
+    var f = FileAccess.open("user://dont-ask-for-storage", FileAccess.WRITE)
+    f.close()
+    await get_tree().process_frame
     get_tree().change_scene_to_file("res://main.tscn")
 
 func check():
