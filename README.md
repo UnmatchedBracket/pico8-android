@@ -4,7 +4,7 @@
 ## whats this stuff
 - `frontend/`: Godot app part; sets up environment and handles video output and keyboard/mouse input.
 - `bootstrap/` (in git soon): Enviroment for running PICO-8, including scripts, proot, and a minimal rootfs.
-- `shim/` (in git soon): Library LD_PRELOAD'ed into PICO-8 to handle streaming i/o and making sure SDL acts exactly as needed.
+- `shim/`: Library LD_PRELOAD'ed into PICO-8 to handle streaming i/o and making sure SDL acts exactly as needed.
 
 ## Building
 ### Godot Frontend
